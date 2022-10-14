@@ -1,7 +1,95 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      form div {
+        display: flex;
+      }
+
+      img {
+        max-width: 80%;
+        width: 800px;
+        display: block;
+      }
+
+      input[type=text] {
+        padding: 12px 24px;
+        font-size: 24px;
+        width: 450px;
+        border-radius: 10px 0 0 10px;
+        border: 1px solid grey;
+        border-right: 0;
+      }
+
+      input[type=submit] {
+        padding: 12px 24px;
+        font-size: 24px;
+        border-radius: 0 10px 10px 0;
+        border: 1px solid #005e4f;
+        background: #009a82;
+        color: white;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background: #018671;
+      }
+
+      input[type=submit]:active {
+        box-shadow: inset -1px -1px 6px #006051;
+      }
+
+      #error {
+        color: red;
+        font-size: 18px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.4s ease-in-out; 
+      }
+
+      #error.show {
+        opacity: 1;
+        transform: translate(0);
+      }
+    </style>
   </head>
   <body>
-    <h1>Coucou Laure 👋</h1>
+    <form id="solution-form">
+      <img src="enigme.png" />
+      <div>
+        <input type="text" id="solution" placeholder="Entre la solution à cette énigme ici" />
+        <input type="submit" value="Valider" />
+      </div>
+      <p id="error">Désolé, ce n'est pas la bonne réponse…</p>
+    </form>
+
+    <script src="https://unpkg.com/emojisplosion/lib/global.js"></script>
+    <script>
+      document.getElementById('solution-form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        const solution = document.getElementById('solution').value
+        if (solution.toLowerCase().trim() === 'bspfj') {
+          document.getElementById('error').classList.remove('show')
+          emojisplosions()
+        } else {
+          document.getElementById('error').classList.add('show')
+        }
+      })
+    </script>
   </body>
 </html>
