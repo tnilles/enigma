@@ -104,10 +104,13 @@
 
     <script src="https://unpkg.com/emojisplosion/lib/global.js"></script>
     <script>
+      const you_won_audio = new Audio('you-won.mp3')
+
       document.getElementById('solution-form').addEventListener('submit', (event) => {
         event.preventDefault()
         const solution = document.getElementById('solution').value
         if (solution.toLowerCase().trim() === 'bspfj') {
+          you_won_audio.play()
           document.getElementById('error').classList.remove('show')
           emojisplosions()
         } else {
