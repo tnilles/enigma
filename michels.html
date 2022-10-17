@@ -105,6 +105,7 @@
     <script src="https://unpkg.com/emojisplosion/lib/global.js"></script>
     <script>
       const you_won_audio = new Audio('you-won.mp3')
+      const cri_du_jojo_audio = new Audio('cri-du-jojo.mp3')
 
       document.getElementById('solution-form').addEventListener('submit', (event) => {
         event.preventDefault()
@@ -114,6 +115,7 @@
           document.getElementById('error').classList.remove('show')
           emojisplosions()
         } else {
+          cri_du_jojo_audio.play()
           document.getElementById('error').classList.add('show')
         }
       })
