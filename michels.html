@@ -64,6 +64,19 @@
 
       #error.show {
         opacity: 1;
+        transform: translate(0)
+      }
+
+      #correct {
+        color: green;
+        font-size: 18px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.4s ease-in-out; 
+      }
+
+      #correct.show {
+        opacity: 1;
         transform: translate(0);
       }
 
@@ -100,6 +113,7 @@
         <input type="submit" value="Valider" />
       </div>
       <p id="error">Désolé, ce n'est pas la bonne réponse…</p>
+      <p id="correct"><strong>Bravo ! Salopette de plombier</strong></p>
     </form>
 
     <script src="https://unpkg.com/emojisplosion/lib/global.js"></script>
@@ -113,6 +127,7 @@
         if (solution.toLowerCase().trim() === 'bspfj') {
           you_won_audio.play()
           document.getElementById('error').classList.remove('show')
+          document.getElementById('correct').classList.add('show')
           emojisplosions()
         } else {
           cri_du_jojo_audio.play()
